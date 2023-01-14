@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <style>
+        .text-center {
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table td,
+        table,
+        th {
+            border: 0.5pt solid windowtext;
+            padding: 4px;
+        }
+
+        table
+    </style>
+</head>
+
+<body>
+    <div class="container-sm">
+        <table>
+
+            <tr class="text-center">
+                <th colspan="3" id="currentDate">
+                    BANK NIFTY CHAIN ANALYSIS
+                </th>
+            </tr>
+            <tr class="text-center">
+                <th colspan="3" id="currentDate">
+                    Market Status
+                </th>
+            </tr>
+            <tr class="text-center">
+                <th>
+                    Last
+                </th>
+                <th>
+                    Change
+                </th>
+                <th>
+                    Change in %
+                </th>
+            </tr>
+            <tr class="text-center">
+                <th id="last">
+                    -
+                </th>
+                <th id="vary">
+                    -
+                </th>
+                <th id="pChanhe">
+                    -
+                </th>
+            </tr>
+            <tr class="text-center">
+                <td colspan="3">Option Chain Summary</td>
+            </tr>
+            <tr class="text-center">
+                <td colspan="1" width="50%">Mid Calls :5</td>
+                <td colspan="2" width="50%">Mid Puts :5</td>
+            </tr>
+            <tr>
+                <td colspan="1" width="50%">
+                    <div class="row">
+                        <div class="col-6" style="text-align: right;">Total:</div>
+                        <div id="mid-call" class="col-6 text-start" style="text-align: left">4547</div>
+                    </div>
+                </td>
+                <td colspan="2" width="50%">
+                    <div class="row">
+                        <div class="col-6" style="text-align: right;">Total:</div>
+                        <div id="mid-put" class="col-6 text-start" style="text-align: left">4547</div>
+                    </div>
+                </td>
+            </tr>
+            <tr class="text-center">
+                <td colspan="3">Spot Price : <span id="spot-price"></span></td>
+            </tr>
+            <tr class="text-center">
+                <td colspan="3">Strik Price : <span id="strike-price"></span></td>
+            </tr>
+            <tr class="text-center">
+                <th colspan="3">Mid PCR: <span id="mid-pcr"></span></th>
+            </tr>
+            <tr class="text-center">
+                <th colspan="3">Total PCR: <span id="total-pcr"></span></th>
+            </tr>
+        </table>
+    </div>
+    <script>
+        $(document).ready(function () {
+            var headers = {
+                "accept-language": "en-US,en;q=0.9",
+                "Access-Control-Allow-Origin": "*",
+            }
+            setInterval(() => {
+                getData()
+            }, 20000)
+
+            function getData() {
+                $.ajax({
+                    url: '/nifty',
+                    type: 'GET',
+                    headers: headers,
+                    dataType: 'json',
+                    success: function (data) {
+
+                        console.log(data)
+                        getInfo(data)
+                    },
+                    error: function (error, status, err) {
+                        console.log(error)
+                        console.log(status)
+                        console.log(err)
+                    }
+
+                })
+
+            }
+
+            function getInfo(data) {
+
+                if (data) {
+                    let totalPcr = data.totalPcr;
+                    let midPcr = data.midPcr;
+                    let spotPrice = data.spotPrice;
+                    let midCall = data.midCall;
+                    let callsMid = data.callsMid;
+                    let strikePrice = data.strikePrice;
+                    let putMid = data.putMid;
+
+                    $('#spot-price').html(spotPrice)
+                    $('#mid-pcr').html(midPcr)
+                    $('#total-pcr').html(totalPcr)
+                    $('#mid-call').html(midCall)
+                    $('#mid-put').html(putMid)
+                    $('#strike-price').html(strikePrice);
+                }
+                /* $('#last').html(last)
+                $('#vary').html(variation)
+                $('#pChange').html(percentChange) */
+
+            }
+        })
+
+    </script>
+</body>
+
+
+</html>
