@@ -25,7 +25,7 @@ var headers = {
 
 http.createServer(async function (req, res) {
 
-  res.writeHead(200, { "content-Type": 'text/plain' })
+ // res.writeHead(200, { "content-Type": 'text/plain' })
 
   if (req.url == '/') {
     let data = fs.readFileSync("index.html", "utf-8")
@@ -39,10 +39,10 @@ http.createServer(async function (req, res) {
     let response = await axios.get('https://www.nseindia.com/api/option-chain-indices?symbol=NIFTY');
 
     let data = await response.data;
-        res.writeHead(200, 'Content-Type: application/json')
-        console.log(data)
+        res.writeHead(200, { "content-Type": 'text/plain' })
+       // console.log(data)
         let info = getInfo(data);
-        console.log(info)
+        console.log(JSON.stringify(info))
         res.write(JSON.stringify(info))
         res.end();
        return;

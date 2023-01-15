@@ -109,18 +109,17 @@
             }
             setInterval(() => {
                 getData()
-            }, 60000)
+            }, 50000)
 
             function getData() {
                 $.ajax({
                     url: '/nifty',
                     type: 'GET',
                     headers: headers,
-                    dataType: 'json',
+                    dataType: 'text',
                     success: function (data) {
-
                         console.log(data)
-                        getInfo(data)
+                        getInfo(JSON.parse(data))
                     },
                     error: function (error, status, err) {
                         console.log(error)
@@ -135,6 +134,7 @@
             function getInfo(data) {
 
                 if (data) {
+                    
                     let totalPcr = data.totalPcr;
                     let midPcr = data.midPcr;
                     let spotPrice = data.spotPrice;
