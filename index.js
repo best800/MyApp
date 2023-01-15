@@ -1,5 +1,6 @@
 const http = require("http")
 const express = require('express')
+const fetch = require('node-fetch')
 const axios = require('axios')
 
 const fs = require('fs')
@@ -15,13 +16,14 @@ app.use(cors())
 
 var headers = {
   "accept-language": "en-US,en;q=0.9",
-  "path": "/api/option-chain-indices?symbol=NIFTY",
-  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
-  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
+ // "path": "/api/option-chain-indices?symbol=NIFTY",
+  //"accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+  // "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
+  //"cookie":"ED7433295473216E162417A49DA27BE9~000000000000000000000000000000~YAAQMyEPF0433KCFAQAAVMq+sRK6qNxW7dRZK/fYyAbYmawsxdtu603EagfrOlXa74wKBb4NeNRO2uPmUc30QEIrV3Zhz1Gl2qT31EUoAMeb75B60cG0ZGJywgc/5ibHsDzbNT9GrXkD4mqxqs7jBrDtcUs+XCbbkWYlLo33q70YfZmm5Tmh2CHBVbjxNBE97fw0Zojf7Fk6+2AcGfo7i0zylIAozDC8eLVrPBVBwPtgziodMrMT10+PhmPatPqdz9U3EMO+xkKqvEEXlAsszk7aEXI9n7qLndJLO8cdT6U7bFLvLIDW2vP48ZqhBR8EnUl8mfd2JVdDBHcOsMbqZ+K0uB+Jpk/TeAUqRuCw/Ee6iIpId3qcj/E8bFKGSVRR"
 }
 
 
-http.createServer(function (req, res) {
+http.createServer(async function (req, res) {
 
   res.writeHead(200, { "content-Type": 'text/plain' })
 
@@ -33,16 +35,21 @@ http.createServer(function (req, res) {
   }
 
   else if (req.url == '/nifty') {
-    axios.get('https://www.nseindia.com/api/option-chain-indices?symbol=NIFTY')
-      .then(response => response.data).then(data => {
+    try{
+    let response = await axios.get('https://www.nseindia.com/api/option-chain-indices?symbol=NIFTY');
+
+    let data = await response.data;
         res.writeHead(200, 'Content-Type: application/json')
-          let info = getInfo(data);
-          res.write(JSON.stringify(info))
-          res.end();
-      }).catch(() => {
-
-      });
-
+        console.log(data)
+        let info = getInfo(data);
+        console.log(info)
+        res.write(JSON.stringify(info),'utf-8')
+        res.end();
+       return;
+    }catch{
+      res.writeHead(200, 'Content-Type: application/json')
+      res.end();
+    }
   }
 
   else if(req.url == '/niftyMarket'){
