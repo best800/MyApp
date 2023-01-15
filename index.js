@@ -43,7 +43,7 @@ http.createServer(async function (req, res) {
         console.log(data)
         let info = getInfo(data);
         console.log(info)
-        res.write(JSON.stringify(info),'utf-8')
+        res.write(JSON.stringify(info))
         res.end();
        return;
     }catch{
