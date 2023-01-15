@@ -44,10 +44,10 @@ http.createServer(async function (req, res) {
     let data = await response.data;
         res.writeHead(200, { "content-Type": 'application/json'})
        // console.log(data)
-        let info = getInfo(data);
+        let info = await getInfo(data);
         res.write(JSON.stringify(info))
         res.end();
-       return;
+      
     }catch{
       res.writeHead(200, 'Content-Type: application/json')
       res.end();
@@ -75,7 +75,7 @@ http.createServer(async function (req, res) {
  
 }).listen(port, 'localhost');
 
-function getInfo(data){
+async function getInfo(data){
   let filteredRecords = data.filtered.data;
 
                
