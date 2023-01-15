@@ -109,14 +109,14 @@
             }
             setInterval(() => {
                 getData()
-            }, 50000)
+            }, 60000)
 
             function getData() {
                 $.ajax({
                     url: '/nifty',
                     type: 'GET',
                     headers: headers,
-                    dataType: 'text',
+                    dataType: 'json',
                     success: function (data) {
                         console.log(data)
                         getInfo(JSON.parse(data))
