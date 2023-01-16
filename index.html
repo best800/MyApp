@@ -19,12 +19,14 @@
         }
 
        
-
+        .table td{
+            padding: 4px;
+        }
         table td,
         table,
         th {
             border: 0.5pt solid windowtext;
-            padding: 4px;
+            padding: 1px;
         }
 
         table {
@@ -136,29 +138,28 @@
                         <td colspan="3" class="bg-warning">Open Interest</td>
                     </tr>
                     <tr class="text-center">
-                        <td colspan="1" width="50%">Top | Bottom | Calls :<span class='nos'>5</span></td>
-                        <td colspan="2" width="50%">Top | Bottom | Puts :<span class='nos'>5</span></td>
+                        <th colspan="1" width="50%">Top | Bottom | Calls :<span class='nos'>5</span></th>
+                        <th colspan="2" width="50%">Top | Bottom | Puts :<span class='nos'>5</span></th>
                     </tr>
                     <tr>
                         <td colspan="1" width="50%">
                             <div class="row">
-                                <div class="col-6" style="text-align: right;">Total:</div>
-                                <div id="omid-call" class="col-6 text-start" style="text-align: left">4547</div>
+                                <div class="col-6" style="text-align: right; font-weight: bold;">Total:</div>
+                                <div id="omid-call" class="col-6 text-start" style="text-align: left;font-weight: bold;">4547</div>
                             </div>
                         </td>
                         <td colspan="2" width="50%">
                             <div class="row">
-                                <div class="col-6" style="text-align: right;">Total:</div>
-                                <div id="omid-put" class="col-6 text-start" style="text-align: left">4547</div>
+                                <div class="col-6" style="text-align: right; font-weight: bold;">Total:</div>
+                                <div id="omid-put" class="col-6 text-start" style="text-align: left;font-weight: bold;">4547</div>
                             </div>
                         </td>
                     </tr>
                     <tr class="text-center">
-                        <td colspan="3">Spot Price : <span id="ospot-price"></span></td>
+                        <th colspan="1" width="50%">Spot Price : <span id="ospot-price"></span></th>
+                        <th colspan="2"  width="50%">Strike Price : <span id="ostrike-price"></span></th>
                     </tr>
-                    <tr class="text-center">
-                        <td colspan="3">Strike Price : <span id="ostrike-price"></span></td>
-                    </tr>
+                    
                     <tr class="text-center" style="background-color: #04AA6D; color: white;">
                         <th colspan="3">Mid PCR: <span id="omid-pcr"></span></th>
                     </tr>
@@ -171,46 +172,39 @@
                         <td colspan="3" class="bg-warning">Change in O Interest</td>
                     </tr>
                     <tr class="text-center">
-                        <td colspan="1" width="50%">Top | Bottom | Calls :<span class='nos'>5</span></td>
-                        <td colspan="2" width="50%">Top | Bottom | put :<span class='nos'>5</span></td>
+                        <th colspan="1" width="50%">Top | Bottom | Calls :<span class='nos'>5</span></th>
+                        <th colspan="2" width="50%">Top | Bottom | put :<span class='nos'>5</span></th>
                     </tr>
                     <tr>
                         <td colspan="1" width="50%">
                             <div class="row">
-                                <div class="col-6" style="text-align: right;">Total:</div>
-                                <div id="mid-call" class="col-6 text-start" style="text-align: left">4547</div>
+                                <div class="col-6" style="text-align: right; font-weight: bold;">Total:</div>
+                                <div id="mid-call" class="col-6 text-start" style="text-align: left;font-weight: bold;">4547</div>
                             </div>
                         </td>
                         <td colspan="2" width="50%">
                             <div class="row">
-                                <div class="col-6" style="text-align: right;">Total:</div>
-                                <div id="mid-put" class="col-6 text-start" style="text-align: left">4547</div>
+                                <div class="col-6" style="text-align: right; font-weight: bold;">Total:</div>
+                                <div id="mid-put" class="col-6 text-start" style="text-align: left;font-weight: bold;">4547</div>
                             </div>
                         </td>
                     </tr>
                     <tr class="text-center">
-                        <td colspan="3">Spot Price : <span id="spot-price"></span></td>
+                        <th colspan="1"  width="50%">Spot Price : <span id="spot-price"></span></th>
+                        <th colspan="2"  width="50%">Strik Price : <span id="strike-price"></span></th>
                     </tr>
                     <tr class="text-center">
-                        <td colspan="3">Strik Price : <span id="strike-price"></span></td>
-                    </tr>
-                    <tr class="text-center" style="background-color: #04AA6D; color: white;">
-                        <th colspan="3">Mid PCR: <span id="mid-pcr"></span></th>
+                        <th colspan="3" width="50%" style="background-color: #04AA6D; color: white;">Total PCR: <span id="total-pcr"></span></th>
                     </tr>
                     <tr class="text-center">
-                        <th colspan="3" style="background-color: #04AA6D; color: white;">Total PCR: <span id="total-pcr"></span>
-                        </th>
+                        <th colspan="3"  width="50%" style="background-color: #04AA6D; color: white;">Mid PCR: <span id="mid-pcr"></span></th>
                     </tr>
+                   
                 </table>
             </div>
         </div>
        
     </div>
-
-
-
-
-
 
 
     <script>

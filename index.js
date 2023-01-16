@@ -180,7 +180,8 @@ async function getInfo(data,query) {
     oPutMid: oTotal_mid_puts,
     oCallsMid: oTotal_mid_calls,
     strikePrice: currentMarketPrice.strikePrice,
-    oMidPcr: midPcr,
+    oMidPcr: oMidPcr,
+    midPcr:midPcr,
     nos:nos/2
   };
 
