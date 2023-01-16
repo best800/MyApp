@@ -6,25 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <style>
         .text-center {
             text-align: center;
         }
 
-        .table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .container{
-            width: 100%;
-        }
         .nowrap {
             white-space: nowrap;
         }
+
+       
 
         table td,
         table,
@@ -33,9 +27,14 @@
             padding: 4px;
         }
 
+        table {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
         #option {
             display: grid;
-            grid-template-columns: 300px 300px;
+            grid-template-columns: 1fr 1fr;
             column-gap: 50px;
             margin-bottom: 12px;
             align-items: center;
@@ -47,175 +46,173 @@
             margin-right: 30px;
         }
 
-        body{
-            position: relative
-        }
-        nav {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            align-items: center;
-            justify-content: center;
-            padding-bottom: 20px;
-        }
-        .nifty-header{
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            margin-top: 0px;
-        }
-        .nifty-header div.title{
-            border: 0.5px solid #11b478;;
-           color: white;
-           background-color: #11b478;
-        }
-        h6.lead{
-            margin-bottom: 0px;
-        }
-        nav div{
-            text-align: center;
-        }
+      
+        
+
         .text-start {
             text-align: left;
         }
-        #main-title{
+
+        #main-title {
             display: block;
         }
-        #select{
+
+        #select {
             display: inline-block;
             width: 200px;
             padding: 2px;
-            
+
         }
 
         .text-end {
             text-align: right;
         }
 
-        table
+        #cont {
+            display: grid;
+            grid-template-columns: 1fr;
+        }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <div>
-            <nav>
-                <div class="sub-header">
-                    <h6 class="lead bg-warning">Nifty Market</h6>
-                    <div class="nifty-header">
-                        <div class="title">Last</div>
-                        <div class="title">Change</div>
-                        <div class="title">Change in %</div>
-                        <div>2050</div>
-                        <div>120</div>
-                        <div>426</div>
-                    </div>
-                </div>
-                <div class="sub-header">
-                    <h6 class="lead bg-primary text-warning">Bank Nifty Market</h6>
-                    <div class="nifty-header">
-                        <div class="title">Last</div>
-                        <div class="title">Change</div>
-                        <div class="title">Change in %</div>
-                        <div>1250</div>
-                        <div>500</div>
-                        <div>15</div>
-                    </div>
-                </div>
-            </nav>
+
+    <div class="conntainer">
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <table class="table table-bordered">
+                    <tr>
+                        <th colspan="3">Nifty Market</th>
+                        <th colspan="3">Bank Nifty Market</th>
+                    </tr>
+                    <tr>
+                        <th>last</th>
+                        <th>Change</th>
+                        <th>Change in %</th>
+                        <th>last</th>
+                        <th>Change</th>
+                        <th>Change in %</th>
+                    </tr>
+        
+                    <tr>
+                        <td>2050</td>
+                        <td>120</td>
+                        <td>426</td>
+                        <td>2050</td>
+                        <td>120</td>
+                        <td>426</td>
+                    </tr>
+                </table>
+            </div>
         </div>
+            
     </div>
-    <div class="container">
-        <table  style="width: 100%;">
-            <tr class="text-center">
-                <th colspan="3" id="currentDate">
-                    <div id="option">
-                        <div class="form-check text-end">
-                            <input class="form-check-input" type="radio" name="nifty" value='1' id="nifty">
-                            <label class="form-check-label" for="nifty">
-                                Nifty 50
-                            </label>
-                        </div>
-                        <div class="form-check text-start">
-                            <input class="form-check-input" type="radio" name="nifty" value='0' id="bankNifty"
-                                checked>
-                            <label class="form-check-label" for="bankNifty">
-                                Bank Nifty
-                            </label>
-                        </div>
-                    </div>                  
-                    <span id="main-title"></span>
-                </th>
-            </tr>
-           
-            <tr class="text-center">
-                <td colspan="3" class="bg-warning">Open Interest</td>
-            </tr>
-            <tr class="text-center">
-                <td colspan="1" width="50%">Top | Bottom | Calls :<span class='nos'>5</span></td>
-                <td colspan="2" width="50%">Top | Bottom | Puts :<span class='nos'>5</span></td>
-            </tr>
-            <tr>
-                <td colspan="1" width="50%">
-                    <div class="row">
-                        <div class="col-6" style="text-align: right;">Total:</div>
-                        <div id="omid-call" class="col-6 text-start" style="text-align: left">4547</div>
-                    </div>
-                </td>
-                <td colspan="2" width="50%">
-                    <div class="row">
-                        <div class="col-6" style="text-align: right;">Total:</div>
-                        <div id="omid-put" class="col-6 text-start" style="text-align: left">4547</div>
-                    </div>
-                </td>
-            </tr>
-            <tr class="text-center">
-                <td colspan="3">Spot Price : <span id="ospot-price"></span></td>
-            </tr>
-            <tr class="text-center">
-                <td colspan="3">Strike Price : <span id="ostrike-price"></span></td>
-            </tr>
-            <tr class="text-center" style="background-color: #04AA6D; color: white;">
-                <th colspan="3">Mid PCR: <span id="omid-pcr"></span></th>
-            </tr>
-            <tr class="text-center">
-                <th colspan="3" style="background-color: #04AA6D; color: white;">Total PCR: <span id="ototal-pcr"></span>
-                </th>
-            </tr>
-            <tr class="text-center">
-                <td colspan="3" class="bg-warning">Change in O Interest</td>
-            </tr>
-            <tr class="text-center">
-                <td colspan="1" width="50%">Top | Bottom | Calls :<span class='nos'>5</span></td>
-                <td colspan="2" width="50%">Top | Bottom | put :<span class='nos'>5</span></td>
-            </tr>
-            <tr>
-                <td colspan="1" width="50%">
-                    <div class="row">
-                        <div class="col-6" style="text-align: right;">Total:</div>
-                        <div id="mid-call" class="col-6 text-start" style="text-align: left">4547</div>
-                    </div>
-                </td>
-                <td colspan="2" width="50%">
-                    <div class="row">
-                        <div class="col-6" style="text-align: right;">Total:</div>
-                        <div id="mid-put" class="col-6 text-start" style="text-align: left">4547</div>
-                    </div>
-                </td>
-            </tr>
-            <tr class="text-center">
-                <td colspan="3">Spot Price : <span id="spot-price"></span></td>
-            </tr>
-            <tr class="text-center">
-                <td colspan="3">Strik Price : <span id="strike-price"></span></td>
-            </tr>
-            <tr class="text-center" style="background-color: #04AA6D; color: white;">
-                <th colspan="3">Mid PCR: <span id="mid-pcr"></span></th>
-            </tr>
-            <tr class="text-center">
-                <th colspan="3" style="background-color: #04AA6D; color: white;">Total PCR: <span id="total-pcr"></span>
-                </th>
-            </tr>
-           </table>
+
+    <div class="conntainer">
+        <div class="row">
+            <div class="col-sm-12">
+                <table class="table table-bordered">
+                    <tr class="text-center">
+                        <th colspan="3" id="currentDate">
+                            <div id="option">
+                                <div class="form-check text-end">
+                                    <input class="form-check-input" type="radio" name="nifty" value='1' id="nifty">
+                                    <label class="form-check-label" for="nifty">
+                                        Nifty 50
+                                    </label>
+                                </div>
+                                <div class="form-check text-start">
+                                    <input class="form-check-input" type="radio" name="nifty" value='0' id="bankNifty" checked>
+                                    <label class="form-check-label" for="bankNifty">
+                                        Bank Nifty
+                                    </label>
+                                </div>
+                            </div>
+                            <span id="main-title"></span>
+                        </th>
+                    </tr>
+        
+                    <tr class="text-center">
+                        <td colspan="3" class="bg-warning">Open Interest</td>
+                    </tr>
+                    <tr class="text-center">
+                        <td colspan="1" width="50%">Top | Bottom | Calls :<span class='nos'>5</span></td>
+                        <td colspan="2" width="50%">Top | Bottom | Puts :<span class='nos'>5</span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" width="50%">
+                            <div class="row">
+                                <div class="col-6" style="text-align: right;">Total:</div>
+                                <div id="omid-call" class="col-6 text-start" style="text-align: left">4547</div>
+                            </div>
+                        </td>
+                        <td colspan="2" width="50%">
+                            <div class="row">
+                                <div class="col-6" style="text-align: right;">Total:</div>
+                                <div id="omid-put" class="col-6 text-start" style="text-align: left">4547</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="text-center">
+                        <td colspan="3">Spot Price : <span id="ospot-price"></span></td>
+                    </tr>
+                    <tr class="text-center">
+                        <td colspan="3">Strike Price : <span id="ostrike-price"></span></td>
+                    </tr>
+                    <tr class="text-center" style="background-color: #04AA6D; color: white;">
+                        <th colspan="3">Mid PCR: <span id="omid-pcr"></span></th>
+                    </tr>
+                    <tr class="text-center">
+                        <th colspan="3" style="background-color: #04AA6D; color: white;">Total PCR: <span
+                                id="ototal-pcr"></span>
+                        </th>
+                    </tr>
+                    <tr class="text-center">
+                        <td colspan="3" class="bg-warning">Change in O Interest</td>
+                    </tr>
+                    <tr class="text-center">
+                        <td colspan="1" width="50%">Top | Bottom | Calls :<span class='nos'>5</span></td>
+                        <td colspan="2" width="50%">Top | Bottom | put :<span class='nos'>5</span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" width="50%">
+                            <div class="row">
+                                <div class="col-6" style="text-align: right;">Total:</div>
+                                <div id="mid-call" class="col-6 text-start" style="text-align: left">4547</div>
+                            </div>
+                        </td>
+                        <td colspan="2" width="50%">
+                            <div class="row">
+                                <div class="col-6" style="text-align: right;">Total:</div>
+                                <div id="mid-put" class="col-6 text-start" style="text-align: left">4547</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="text-center">
+                        <td colspan="3">Spot Price : <span id="spot-price"></span></td>
+                    </tr>
+                    <tr class="text-center">
+                        <td colspan="3">Strik Price : <span id="strike-price"></span></td>
+                    </tr>
+                    <tr class="text-center" style="background-color: #04AA6D; color: white;">
+                        <th colspan="3">Mid PCR: <span id="mid-pcr"></span></th>
+                    </tr>
+                    <tr class="text-center">
+                        <th colspan="3" style="background-color: #04AA6D; color: white;">Total PCR: <span id="total-pcr"></span>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+       
     </div>
+
+
+
+
+
+
+
     <script>
         $(document).ready(function () {
             var headers = {
@@ -223,39 +220,39 @@
                 "Access-Control-Allow-Origin": "*",
             }
             let current = getStorage('curr')
-            debugger;
-            let val = current=="1" ? true:false
+
+            let val = current == "1" ? true : false
             getData(val)
             setControlState(val)
-         
+
             setInterval(() => {
-                let val = getStorage("curr") =='1'? true:false;
+                let val = getStorage("curr") == '1' ? true : false;
 
                 setControlState(val);
 
-                    getData(val)
-                },60000)
-               
-        
+                getData(val)
+            }, 60000)
+
+
 
             let bankNifty = document.getElementById('bankNifty')
-            bankNifty.addEventListener("change",function(event){
+            bankNifty.addEventListener("change", function (event) {
                 getData(true)
-                window.currenNiftyValue=true;
-                setStorage("curr",'1')
+                window.currenNiftyValue = true;
+                setStorage("curr", '1')
                 $('#main-title').html('BANK NIFTY CHAIN ANALYSIS')
             })
 
             let Nifty = document.getElementById('nifty')
-            Nifty.addEventListener("change",function(event){
+            Nifty.addEventListener("change", function (event) {
                 getData(false)
-                setStorage("curr",'0')
+                setStorage("curr", '0')
                 $('#main-title').html('NIFTY 50 CHAIN ANALYSIS')
             })
 
 
             function getData(isNifty) {
-                let path = isNifty  ? '/banknifty':'/nifty';
+                let path = isNifty ? '/banknifty' : '/nifty';
 
                 $.ajax({
                     url: path,
@@ -312,26 +309,26 @@
                 $('#pChange').html(percentChange) */
 
             }
-    
+
         });
 
-        function setControlState(val){
-            if(val){
-                $('#bankNifty').attr('checked','checked')
+        function setControlState(val) {
+            if (val) {
+                $('#bankNifty').attr('checked', 'checked')
                 $('#main-title').html('BANK NIFTY CHAIN ANALYSIS')
             }
-            else{
-                $('#nifty').attr('checked','checked')
+            else {
+                $('#nifty').attr('checked', 'checked')
                 $('#main-title').html('NIFTY 50 CHAIN ANALYSIS')
             }
         }
 
-        function setStorage(key,item){
-            localStorage.setItem(key,item)
+        function setStorage(key, item) {
+            localStorage.setItem(key, item)
         }
 
-        function getStorage(key){
-           return localStorage.getItem(key)
+        function getStorage(key) {
+            return localStorage.getItem(key)
         }
 
 
